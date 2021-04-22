@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <title>Diary-login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% load widget_tweaks %}
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+
+   <div class="w-50 mx-auto my-3"><br><br><br><br>
+   <h1 class="text-center mx-auto my-3">Diary - LOGIN</h1><br><br><br>
+        <form method="post" action="{% url 'accounts:login' %}">
+              {% csrf_token %}
+
+              <div class="form-group">
+                  <label for="username">Username:</label>
+                  <input class="form-control" type="text" name="username" placeholder="Username">
+              </div>
+
+              <div class="form-group">
+                  <label for="password">Password</label>
+                  <input class="form-control" type="password" name="password" placeholder="Your Password">
+              </div>
+<br><br><br><br>
+              <div class="container text-center">
+                  <input type="submit" class="btn btn-warning col-md-4" name="" value="Login">
+                
+              </div>
+
+        </form>
+
+        <div class="forgot-password">
+                <a href="../password_reset.html">Forgot Password? </a>
+        </div>
+         <div class="container text-center"><br><br>
+        <a href="{% url 'accounts:register' %}">New here? click here to Register</a>
+      </div>
+    </div>
+
+{% endblock %}
